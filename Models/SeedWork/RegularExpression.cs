@@ -1,4 +1,4 @@
-﻿namespace Domain.SeedWork
+﻿namespace Models.SeedWork
 {
 	/// <summary>
 	/// https://regex101.com/

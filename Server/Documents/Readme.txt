@@ -43,6 +43,35 @@ Add -> New Item... -> Installed -> Visual C# -> ASP.NET Core -> Web -> Content -
 
 **************************************************
 )
+Add -> New Folder:
+.\wwwroot\js
+**************************************************
+
+**************************************************
+)
+Add -> New Folder:
+.\wwwroot\images
+**************************************************
+
+**************************************************
+)
+Add -> New Folder:
+.\wwwroot\lib
+**************************************************
+
+**************************************************
+)
+Copy and Pasted -> Icon Files:
+.\wwwroot\
+
+https://favicon.io/
+https://www.favicon.cc/
+https://realfavicongenerator.net/ (OK)
+https://www.favicongenerator.com/
+**************************************************
+
+**************************************************
+)
 Right Click on Project -> Select [Manage Client-Side Libraries…]
 .\libman.json
 **************************************************

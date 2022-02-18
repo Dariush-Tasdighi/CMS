@@ -1,0 +1,27 @@
+﻿<!doctype html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<title>@(ViewBag.Title)</title>
+
+	<link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.rtl.min.css" />
+	<link rel="stylesheet" href="~/lib/bootstrap-icons/font/bootstrap-icons.min.css" />
+
+	<link href="~/css/site.css?v=1.0" rel="stylesheet" />
+</head>
+
+<body>
+	<div class="container">
+		@(RenderBody())
+	</div>
+
+	<script src="~/lib/bootstrap/js/bootstrap.min.js"></script>
+
+	<script src="~/lib/jquery/jquery.min.js"></script>
+	<script src="~/lib/jquery-validate/jquery.validate.min.js"></script>
+	<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-﻿namespace Domain
+﻿namespace Models
 {
 	public class User : SeedWork.Entity,
 		SeedWork.IEntityHasIsActive,
@@ -21,16 +21,44 @@
 		#endregion /Constant(s)
 
 		#region Static(s)
+		private static string GetEmailAddressVerificationKey()
+		{
+			string result =
+				System.Guid.NewGuid().ToString()
+				+
+				System.Guid.NewGuid().ToString()
+				;
+
+			result =
+				result.Replace("-", string.Empty);
+
+			return result;
+		}
 		#endregion /Static(s)
 
+		//#region Constructor
+		//public User() : base()
+		//{
+		//	IsDeletable = true;
+		//	IsUpdatable = true;
+
+		//	SetUpdateDateTime();
+		//	SetEmailAddressVerificationKey();
+		//}
+		//#endregion /Constructor
+
 		#region Constructor
-		public User() : base()
+		public User(string username, string emailAddress, string password) : base()
 		{
 			IsDeletable = true;
 			IsUpdatable = true;
 
 			SetUpdateDateTime();
-			SetEmailAddressVerificationKey();
+
+			Username = username;
+			Password = password;
+			EmailAddress = emailAddress;
+			EmailAddressVerificationKey = GetEmailAddressVerificationKey();
 		}
 		#endregion /Constructor
 
@@ -106,7 +134,7 @@
 			(length: LastNameMaxLength,
 			ErrorMessageResourceType = typeof(Resources.Messages.Validations),
 			ErrorMessageResourceName = nameof(Resources.Messages.Validations.MaxLength))]
-		public string LastName { get; set; }
+		public string? LastName { get; set; }
 		// **********
 
 		// **********
@@ -118,43 +146,23 @@
 			(length: FirstNameMaxLength,
 			ErrorMessageResourceType = typeof(Resources.Messages.Validations),
 			ErrorMessageResourceName = nameof(Resources.Messages.Validations.MaxLength))]
-		public string FirstName { get; set; }
+		public string? FirstName { get; set; }
 		// **********
 
 		// **********
-		private string _username;
-
 		[System.ComponentModel.DataAnnotations.Display
 			(ResourceType = typeof(Resources.DataDictionary),
 			Name = nameof(Resources.DataDictionary.Username))]
+
+		[System.ComponentModel.DataAnnotations.Required
+			(ErrorMessageResourceType = typeof(Resources.Messages.Validations),
+			ErrorMessageResourceName = nameof(Resources.Messages.Validations.Required))]
 
 		[System.ComponentModel.DataAnnotations.MaxLength
 			(length: UsernameMaxLength,
 			ErrorMessageResourceType = typeof(Resources.Messages.Validations),
 			ErrorMessageResourceName = nameof(Resources.Messages.Validations.MaxLength))]
-		public string Username
-		{
-			get
-			{
-				return _username;
-			}
-			set
-			{
-				//value =
-				//	Dtat.String.Fix(value);
-
-				if (value == null)
-				{
-					_username = null;
-					return;
-				}
-
-				value =
-					value.Replace(" ", string.Empty);
-
-				_username = value;
-			}
-		}
+		public string Username { get; set; }
 		// **********
 
 		// **********
@@ -194,7 +202,7 @@
 			(length: CellPhoneNumberMaxLength,
 			ErrorMessageResourceType = typeof(Resources.Messages.Validations),
 			ErrorMessageResourceName = nameof(Resources.Messages.Validations.MaxLength))]
-		public string CellPhoneNumber { get; set; }
+		public string? CellPhoneNumber { get; set; }
 		// **********
 
 		// **********
@@ -206,19 +214,7 @@
 			(length: CellPhoneNumberVerificationKeyMaxLength,
 			ErrorMessageResourceType = typeof(Resources.Messages.Validations),
 			ErrorMessageResourceName = nameof(Resources.Messages.Validations.MaxLength))]
-		public string CellPhoneNumberVerificationKey { get; private set; }
-		// **********
-
-		// **********
-		[System.ComponentModel.DataAnnotations.Display
-			(ResourceType = typeof(Resources.DataDictionary),
-			Name = nameof(Resources.DataDictionary.NationalCode))]
-
-		[System.ComponentModel.DataAnnotations.MaxLength
-			(length: NationalCodeMaxLength,
-			ErrorMessageResourceType = typeof(Resources.Messages.Validations),
-			ErrorMessageResourceName = nameof(Resources.Messages.Validations.MaxLength))]
-		public string NationalCode { get; set; }
+		public string? CellPhoneNumberVerificationKey { get; private set; }
 		// **********
 
 		// **********
@@ -241,29 +237,15 @@
 		[System.ComponentModel.DataAnnotations.Display
 			(ResourceType = typeof(Resources.DataDictionary),
 			Name = nameof(Resources.DataDictionary.Description))]
-		public string Description { get; set; }
+		public string? Description { get; set; }
 		// **********
 
 		// **********
 		[System.ComponentModel.DataAnnotations.Display
 			(ResourceType = typeof(Resources.DataDictionary),
 			Name = nameof(Resources.DataDictionary.OwnerDescription))]
-		public string OwnerDescription { get; set; }
+		public string? OwnerDescription { get; set; }
 		// **********
-
-		private void SetEmailAddressVerificationKey()
-		{
-			string result =
-				System.Guid.NewGuid().ToString()
-				+
-				System.Guid.NewGuid().ToString()
-				;
-
-			result =
-				result.Replace("-", string.Empty);
-
-			EmailAddressVerificationKey = result;
-		}
 
 		public void SetUpdateDateTime()
 		{

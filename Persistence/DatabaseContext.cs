@@ -1,17 +1,16 @@
-﻿using Microsoft.EntityFrameworkCore;
-
-namespace Persistence
+﻿namespace Persistence
 {
 	public class DatabaseContext : Microsoft.EntityFrameworkCore.DbContext
 	{
-		public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options: options)
+		public DatabaseContext
+			(Microsoft.EntityFrameworkCore.DbContextOptions<DatabaseContext> options) : base(options: options)
 		{
 			//Database.EnsureCreated();
 		}
 
-		public Microsoft.EntityFrameworkCore.DbSet<Domain.User> Users { get; set; }
+		public Microsoft.EntityFrameworkCore.DbSet<Models.User>? Users { get; set; }
 
-		public Microsoft.EntityFrameworkCore.DbSet<Domain.Cms.Page> Pages { get; set; }
+		public Microsoft.EntityFrameworkCore.DbSet<Models.Cms.Page>? Pages { get; set; }
 
 		protected override void OnConfiguring
 			(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder optionsBuilder)
@@ -23,7 +22,7 @@ namespace Persistence
 			(Microsoft.EntityFrameworkCore.ModelBuilder modelBuilder)
 		{
 			modelBuilder.ApplyConfigurationsFromAssembly
-				(assembly: typeof(Aggregates.Users.User).Assembly);
+				(assembly: typeof(Configurations.User).Assembly);
 		}
 	}
 }

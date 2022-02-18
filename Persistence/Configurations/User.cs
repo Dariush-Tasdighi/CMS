@@ -1,8 +1,8 @@
-﻿namespace Persistence.Aggregates.Users
+﻿namespace Persistence.Configurations
 {
 	internal class User :
 		object, Microsoft.EntityFrameworkCore
-		.IEntityTypeConfiguration<Domain.User>
+		.IEntityTypeConfiguration<Models.User>
 	{
 		public User() : base()
 		{
@@ -10,7 +10,7 @@
 
 		public void Configure
 			(Microsoft.EntityFrameworkCore.Metadata.Builders
-			.EntityTypeBuilder<Domain.User> builder)
+			.EntityTypeBuilder<Models.User> builder)
 		{
 			// **************************************************
 			// **************************************************
@@ -46,18 +46,6 @@
 
 			builder
 				.HasIndex(current => new { current.CellPhoneNumber })
-				.IsUnique(unique: true)
-				;
-			// **************************************************
-
-			// **************************************************
-			builder
-				.Property(current => current.NationalCode)
-				.IsUnicode(unicode: false)
-				;
-
-			builder
-				.HasIndex(current => new { current.NationalCode })
 				.IsUnique(unique: true)
 				;
 			// **************************************************

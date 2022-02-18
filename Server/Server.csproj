@@ -3,17 +3,24 @@
 	<PropertyGroup>
 		<Nullable>enable</Nullable>
 		<TargetFramework>net6.0</TargetFramework>
+		<AssemblyVersion></AssemblyVersion>
+		<FileVersion></FileVersion>
 		<!--<ImplicitUsings>enable</ImplicitUsings>-->
 	</PropertyGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\Domain\Domain.csproj" />
 		<ProjectReference Include="..\Resources\Resources.csproj" />
 		<ProjectReference Include="..\Persistence\Persistence.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="6.0.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Pages\Learning\" />
+	  <Folder Include="wwwroot\js\" />
+	  <Folder Include="wwwroot\images\" />
 	</ItemGroup>
 
 </Project>

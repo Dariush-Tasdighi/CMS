@@ -17,7 +17,7 @@ namespace Server.Pages.Cms.Pages
 		//}
 
 		[Microsoft.AspNetCore.Mvc.BindProperty]
-		public System.Collections.Generic.IEnumerable<Domain.Cms.Page>? Pages { get; set; }
+		public System.Collections.Generic.IEnumerable<Models.Cms.Page>? Pages { get; set; }
 
 		public async System.Threading.Tasks.Task
 			<Microsoft.AspNetCore.Mvc.IActionResult> OnGetAsync()

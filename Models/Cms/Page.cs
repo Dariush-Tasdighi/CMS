@@ -1,4 +1,4 @@
-﻿namespace Domain.Cms
+﻿namespace Models.Cms
 {
 	public class Page : SeedWork.Entity
 	{

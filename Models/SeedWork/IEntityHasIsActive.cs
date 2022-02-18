@@ -1,4 +1,4 @@
-﻿namespace Domain.SeedWork
+﻿namespace Models.SeedWork
 {
 	public interface IEntityHasIsActive
 	{
